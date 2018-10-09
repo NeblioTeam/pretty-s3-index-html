@@ -56,11 +56,12 @@ Modified by Lewis Lebentz too. (https://lew.im).
 
 <div class="container">
 	<h1 id="h1-title">Loading...</h1>
+	<h4 id="h4-title"></h4>
 	<table class="hide-while-loading table table-striped">
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th>Date Modified</th>
+				<th>Date Created</th>
 				<th>Size</th>
 				<th>Type</th>
 			</tr>
@@ -106,7 +107,7 @@ Modified by Lewis Lebentz too. (https://lew.im).
 	var bucketUrl = document.location.href.replace( /\/[^\/]+$/, '' );
 
 	// TODO: Convert from s3-website URL to s3 URL automatically
-	bucketUrl = "ENTER BUCKET URL HERE";
+	bucketUrl = "https://neblio-build-staging.ams3.digitaloceanspaces.com";
 	var compiledTemplate;
 	var createdFolders = [];
 
@@ -202,9 +203,11 @@ Modified by Lewis Lebentz too. (https://lew.im).
 		var listBucketResult = $(xml).find('ListBucketResult');
 
 		// set a reasonable title instead of "Bucket loading"
-		var title = 'Index of "' + listBucketResult.find('Name').text() + '"';
+		var title = 'Neblio Continuous Deployment Builds';
+		var subtitle = 'WARNING: These "nightly" builds are created every time a GitHub commit is created that passes our automated suite of tests. They may be buggy and/or have partially developed features. They should be considered, at best, "alpha builds."'
 		document.title = title;
 		$('#h1-title').text( title );
+		$('#h4-title').text( subtitle );
 
 		var $tbodyContent = $('#tbody-content');
 		var truncated = listBucketResult.find('IsTruncated').text() == 'true';
