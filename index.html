@@ -255,7 +255,7 @@ Modified by Lewis Lebentz too. (https://lew.im).
 				if (left.level > 1 && right.level > 1) {
 					return left.key.localeCompare( right.key, [], { sensitivity: 'base' } ) * -1;
 				} else {
-					return left.key.localeCompare( right.key, [], { sensitivity: 'base' } );
+					return left.key.localeCompare( right.key, [], { sensitivity: 'base' } ) * -1;
 				}
 			} );
 
