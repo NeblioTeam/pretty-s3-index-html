@@ -251,12 +251,11 @@ Modified by Lewis Lebentz too. (https://lew.im).
 				// force folders to sort before files
 				if (left.isFolder && !right.isFolder) return -1;
 				if (!left.isFolder && right.isFolder) return 1;
-				// reverse sort subdirectories (newest build first)
-				if (left.level > 1 && right.level > 1) {
-					return left.key.localeCompare( right.key, [], { sensitivity: 'base' } ) * -1;
-				} else {
-					return left.key.localeCompare( right.key, [], { sensitivity: 'base' } ) * -1;
-				}
+
+				var a = new Date(left.lastModified)
+				var b = new Date(right.lastModified)
+
+				return (a.getTime() - b.getTime()) * -1
 			} );
 
 			var folders = {};
