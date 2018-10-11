@@ -154,7 +154,7 @@ Modified by Lewis Lebentz too. (https://lew.im).
 
 		// TODO: Make easier to configure?
 		if (self.level == 1) {
-			if (self.filename == "index.html" || self.filename == "favicon.ico") {
+			if (self.filename == "index.html" || self.filename == "favicon.ico" || /rpi-build-ccache-*/.test(self.filename)) {
 				self.hidden = true;
 			}
 		}
